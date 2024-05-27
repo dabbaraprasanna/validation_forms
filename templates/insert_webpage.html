@@ -10,7 +10,7 @@
         <h1>insert webpage</h1>
         <form method="POST">
       {% csrf_token %}
-      {{EWFO}}
+      {{EWFO.as_p}}
 
       <input type="submit">
 

@@ -16,6 +16,19 @@ class TopicForm(forms.Form):
 class WebpageForm(forms.Form):
      tn=forms.ModelChoiceField(queryset=Topic.objects.all())
      na=forms.CharField(validators=[validate_is_b,validate_is_len])
-     em=forms.EmailField()
      u=forms.URLField()
+     em=forms.EmailField()
+     reemail=forms.EmailField()
+     bootcatcher=forms.CharField(widget=forms.HiddenInput,required=False)
+     def clean(self):
+        e=self.cleaned_data['em']
+        re=self.cleaned_data['reemail']
+        if e!=re:
+            raise forms.ValidationError('both are not mathing')
+     def clean_bootcatcher(self):
+        cu=self.cleaned_data['bootcatcher']
+        if  len(cu)>0:
+            raise forms.ValidationError('it should be none')
+    
+
 

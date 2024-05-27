@@ -28,9 +28,9 @@ def insert_webpage(request):
             na=WFDO.cleaned_data['na']
             em=WFDO.cleaned_data['em']
             u=WFDO.cleaned_data['u']
-            WO=webpage.objects.get_or_create(topic_name=TO,name=na,email=em,url=u)[0]
-            WO.save()
-            return HttpResponse('webpage is created')
+            #WO=webpage.objects.get_or_create(topic_name=TO,name=na,email=em,url=u)[0]
+            #WO.save()
+            return HttpResponse(str(WFDO.cleaned_data))
         else:
             return HttpResponse('invalid')
     return render(request,'insert_webpage.html',d)
